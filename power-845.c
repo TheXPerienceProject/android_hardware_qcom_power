@@ -200,8 +200,9 @@ int power_hint_override(power_hint_t hint, void *UNUSED(data))
             ret_val = process_perf_hint(data, VR_MODE);
             break;
         case POWER_HINT_INTERACTION:
-        {
-            int resources[] = {0x40800100, 0x553};
+            int resources[] = {
+                MIN_FREQ_LITTLE_CORE_0, 0x514
+            };
             int duration = 100;
             interaction(duration, sizeof(resources)/sizeof(resources[0]), resources);
             ret_val = HINT_HANDLED;

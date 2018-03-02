@@ -38,7 +38,7 @@
 #include <stdlib.h>
 
 #define LOG_TAG "QTI PowerHAL"
-#include <utils/Log.h>
+#include <log/log.h>
 #include <hardware/hardware.h>
 #include <hardware/power.h>
 
@@ -192,5 +192,3 @@ static void process_video_encode_hint(void *metadata)
     }
     return;
 }
-
-

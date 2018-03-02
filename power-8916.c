@@ -38,7 +38,7 @@
 #include <stdlib.h>
 
 #define LOG_TAG "QTI PowerHAL"
-#include <utils/Log.h>
+#include <log/log.h>
 #include <hardware/hardware.h>
 #include <hardware/power.h>
 
@@ -226,4 +226,3 @@ int  set_interactive_override(int on)
     saved_interactive_mode = !!on;
     return HINT_HANDLED;
 }
-

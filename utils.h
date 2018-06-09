@@ -38,10 +38,6 @@ int is_ondemand_governor(char*);
 int is_alessa_governor(char*);
 int is_lissi_governor(char*);
 
-void vote_ondemand_io_busy_off();
-void unvote_ondemand_io_busy_off();
-void vote_ondemand_sdf_low();
-void unvote_ondemand_sdf_low();
 void perform_hint_action(int hint_id, int resource_values[],
     int num_resources);
 void undo_hint_action(int hint_id);

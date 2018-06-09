@@ -233,12 +233,6 @@ int is_ondemand_governor(char* governor) {
    return 0;
 }
 
-int is_msmdcvs_governor(char* governor) {
-   if (strncmp(governor, MSMDCVS_GOVERNOR, (strlen(MSMDCVS_GOVERNOR)+1)) == 0)
-      return 1;
-   return 0;
-}
-
 int is_alessa_governor(char* governor) {
    if (strncmp(governor, ALESSA_GOVERNOR, (strlen(ALESSA_GOVERNOR)+1)) == 0)
       return 1;

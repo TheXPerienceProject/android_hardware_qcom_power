@@ -35,7 +35,6 @@ int get_scaling_governor(char governor[], int size);
 int get_scaling_governor_check_cores(char governor[], int size,int core_num);
 int is_interactive_governor(char*);
 int is_ondemand_governor(char*);
-int is_msmdcvs_governor(char*);
 int is_alessa_governor(char*);
 int is_lissi_governor(char*);
 

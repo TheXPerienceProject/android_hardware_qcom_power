@@ -135,7 +135,7 @@ int sysfs_read(const char *path, char *s, int num_bytes)
     char buf[80];
     int count;
     int ret = 0;
-    int fd = open(path, O_RDONLY);
+    int fd = open(path, O_RDONLY | O_CLOEXEC);
 
     if (fd < 0) {
         strerror_r(errno, buf, sizeof(buf));
@@ -163,7 +163,7 @@ int sysfs_write(const char *path, char *s)
     char buf[80];
     int len;
     int ret = 0;
-    int fd = open(path, O_WRONLY);
+    int fd = open(path, O_WRONLY | O_CLOEXEC);
 
     if (fd < 0) {
         strerror_r(errno, buf, sizeof(buf));
@@ -400,9 +400,9 @@ int get_soc_id(void)
     char buf[10] = { 0 };
 
     if (!access(SOC_ID_0, F_OK))
-        fd = open(SOC_ID_0, O_RDONLY);
+        fd = open(SOC_ID_0, O_RDONLY | O_CLOEXEC);
     else
-        fd = open(SOC_ID_1, O_RDONLY);
+        fd = open(SOC_ID_1, O_RDONLY | O_CLOEXEC);
 
     if (fd >= 0) {
         if (read(fd, buf, sizeof(buf) - 1) == -1)

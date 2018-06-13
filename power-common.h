@@ -37,6 +37,8 @@
 #define ONDEMAND_GOVERNOR "ondemand"
 #define INTERACTIVE_GOVERNOR "interactive"
 #define MSMDCVS_GOVERNOR "msm-dcvs"
+#define ALESSA_GOVERNOR "Alessa"
+#define LISI_GOVERNOR "lisi"
 
 #define HINT_HANDLED (0)
 #define HINT_NONE (-1)

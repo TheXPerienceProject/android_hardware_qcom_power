@@ -239,6 +239,18 @@ int is_msmdcvs_governor(char* governor) {
    return 0;
 }
 
+int is_alessa_governor(char* governor) {
+   if (strncmp(governor, ALESSA_GOVERNOR, (strlen(ALESSA_GOVERNOR)+1)) == 0)
+      return 1;
+   return 0;
+}
+
+int is_lisi_governor(char* governor) {
+   if (strncmp(governor, LISI_GOVERNOR, (strlen(LISI_GOVERNOR)+1)) == 0)
+      return 1;
+   return 0;
+}
+
 #ifndef INTERACTION_BOOST
 void interaction(int UNUSED(duration), int UNUSED(num_args), int UNUSED(opt_list[]))
 {

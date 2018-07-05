@@ -186,7 +186,7 @@ static int process_video_encode_hint(void *metadata)
     return HINT_NONE;
 }
 
-int power_hint_override(power_hint_t hint, void *UNUSED(data))
+int power_hint_override(power_hint_t hint, void *data)
 {
     int ret_val = HINT_NONE;
     switch (hint) {
@@ -200,6 +200,7 @@ int power_hint_override(power_hint_t hint, void *UNUSED(data))
             ret_val = process_perf_hint(data, VR_MODE);
             break;
         case POWER_HINT_INTERACTION:
+        {
             int resources[] = {
                 MIN_FREQ_LITTLE_CORE_0, 0x514
             };
@@ -207,7 +208,7 @@ int power_hint_override(power_hint_t hint, void *UNUSED(data))
             interaction(duration, sizeof(resources)/sizeof(resources[0]), resources);
             ret_val = HINT_HANDLED;
         }
-        break;
+            break;
         default:
             break;
     }

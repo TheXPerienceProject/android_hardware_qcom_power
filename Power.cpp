@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2017 The Android Open Source Project
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017-2018 The LineageOS Project
+ * Copyright (C) 2018 The XPerience Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +44,7 @@ using ::android::hardware::power::V1_1::PowerStateSubsystem;
 using ::android::hardware::hidl_vec;
 using ::android::hardware::Return;
 using ::android::hardware::Void;
+using ::android::hardware::power::V1_0::Feature;
 
 Power::Power() {
     power_init();
@@ -55,7 +57,7 @@ Return<void> Power::setInteractive(bool interactive)  {
 }
 
 Return<void> Power::powerHint(PowerHint hint, int32_t data) {
-    power_hint(static_cast<power_hint_t>(hint), data ? (&data) : NULL);
+    power_hint(static_cast<power_hint_t>(hint), &data);
     return Void();
 }
 
@@ -229,6 +231,32 @@ done:
 Return<void> Power::powerHintAsync(PowerHint hint, int32_t data) {
     // just call the normal power hint in this oneway function
     return powerHint(hint, data);
+}
+
+Return<int32_t> Power::getFeature(XPerienceFeature feature)  {
+    if (feature ==XPerienceFeature::SUPPORTED_PROFILES) {
+        return get_number_of_profiles();
+    }
+    return -1;
+}
+ status_t Power::registerAsSystemService() {
+    status_t ret = 0;
+     ret = IPower::registerAsService();
+    if (ret != 0) {
+        ALOGE("Failed to register IPower (%d)", ret);
+        goto fail;
+    } else {
+        ALOGI("Successfully registered IPower");
+    }
+     ret = IXPeriencePower::registerAsService();
+    if (ret != 0) {
+        ALOGE("Failed to register IXPeriencePower (%d)", ret);
+        goto fail;
+    } else {
+        ALOGI("Successfully registered IXPeriencePower");
+    }
+ fail:
+    return ret;
 }
 
 }  // namespace implementation

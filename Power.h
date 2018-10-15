@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2017 The Android Open Source Project
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017-2018 The LineageOS Project
+ * Copyright (C) 2018 The XPerience Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +20,7 @@
 #define ANDROID_HARDWARE_POWER_V1_1_POWER_H
 
 #include <android/hardware/power/1.1/IPower.h>
+#include <vendor/xperience/power/1.0/IXPeriencePower.h>
 #include <hidl/MQDescriptor.h>
 #include <hidl/Status.h>
 #include <hardware/power.h>
@@ -32,13 +34,16 @@ namespace implementation {
 using ::android::hardware::power::V1_0::Feature;
 using ::android::hardware::power::V1_0::PowerHint;
 using ::android::hardware::power::V1_1::IPower;
+using ::vendor::xperience::power::V1_0::IXPeriencePower;
+using ::vendor::xperience::power::V1_0::XPerienceFeature;
 using ::android::hardware::Return;
 using ::android::hardware::Void;
 
-struct Power : public IPower {
+struct Power : public IPower, public IXPeriencePower {
     // Methods from ::android::hardware::power::V1_0::IPower follow.
 
     Power();
+	status_t registerAsSystemService();
 
     Return<void> setInteractive(bool interactive) override;
     Return<void> powerHint(PowerHint hint, int32_t data) override;
@@ -48,6 +53,9 @@ struct Power : public IPower {
     // Methods from ::android::hardware::power::V1_1::IPower follow.
     Return<void> getSubsystemLowPowerStats(getSubsystemLowPowerStats_cb _hidl_cb) override;
     Return<void> powerHintAsync(PowerHint hint, int32_t data) override;
+
+    // Methods from ::vendor::xperience::power::V1_0::IXPeriencePower follow.
+    Return<int32_t> getFeature(XPerienceFeature feature) override;
 
     // Methods from ::android::hidl::base::V1_0::IBase follow.
 

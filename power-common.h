@@ -1,5 +1,7 @@
 /*
  * Copyright (c) 2013, The Linux Foundation. All rights reserved.
+ * Copyright (C) 2017-2018 The LineageOS Project
+ * Copyright (C) 2018 The XPerience Project
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -45,6 +47,14 @@ enum CPU_GOV_CHECK {
     CPU1 = 1,
     CPU2 = 2,
     CPU3 = 3
+};
+
+enum {
+    PROFILE_POWER_SAVE = 0,
+    PROFILE_BALANCED,
+    PROFILE_HIGH_PERFORMANCE,
+    PROFILE_BIAS_POWER,
+    PROFILE_BIAS_PERFORMANCE
 };
 
 #define UNUSED(x) UNUSED_ ## x __attribute__((__unused__))

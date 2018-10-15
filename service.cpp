@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2017 The Android Open Source Project
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017-2018 The LineageOS Project
+ * Copyright (C) 2018 The XPerience Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,7 +50,7 @@ int main() {
 
     configureRpcThreadpool(1, true /*callerWillJoin*/);
 
-    status = service->registerAsService();
+    status = service->registerAsSystemService();
     if (status != OK) {
         ALOGE("Could not register service for Power HAL Iface (%d).", status);
         goto shutdown;

@@ -228,7 +228,7 @@ int power_hint_override(power_hint_t hint, void *data)
 
         if (!on) {
             /* Display off. */
-            if (is_interactive_governor(governor)  || is_lisi_governor(governor) ) {
+            if (is_interactive_governor(governor)  || is_lissi_governor(governor) ) {
                 int resource_values[] = {
                     INT_OP_CLUSTER0_TIMER_RATE, BIG_LITTLE_TR_MS_40
                 };
@@ -247,7 +247,7 @@ int power_hint_override(power_hint_t hint, void *data)
         } else {
             /* Display on. */
             if (is_interactive_governor(governor) || is_alessa_governor(governor)
-                || is_lisi_governor(governor) ) {
+                || is_lissi_governor(governor) ) {
                 undo_hint_action(DISPLAY_STATE_HINT_ID);
             }
         }

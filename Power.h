@@ -43,7 +43,7 @@ struct Power : public IPower, public IXPeriencePower {
     // Methods from ::android::hardware::power::V1_0::IPower follow.
 
     Power();
-	status_t registerAsSystemService();
+    status_t registerAsSystemService();
 
     Return<void> setInteractive(bool interactive) override;
     Return<void> powerHint(PowerHint hint, int32_t data) override;

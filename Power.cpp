@@ -44,7 +44,6 @@ using ::android::hardware::power::V1_1::PowerStateSubsystem;
 using ::android::hardware::hidl_vec;
 using ::android::hardware::Return;
 using ::android::hardware::Void;
-using ::android::hardware::power::V1_0::Feature;
 
 Power::Power() {
     power_init();

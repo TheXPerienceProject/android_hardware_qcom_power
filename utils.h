@@ -38,8 +38,7 @@ int is_ondemand_governor(char*);
 int is_alessa_governor(char*);
 int is_lissi_governor(char*);
 
-void perform_hint_action(int hint_id, int resource_values[],
-    int num_resources);
+int perform_hint_action(int hint_id, int resource_values[], int num_resources);
 void undo_hint_action(int hint_id);
 void undo_initial_hint_action();
 void release_request(int lock_handle);

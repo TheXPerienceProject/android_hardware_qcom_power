@@ -239,7 +239,7 @@ int is_alessa_governor(char* governor) {
    return 0;
 }
 
-int is_lisi_governor(char* governor) {
+int is_lissi_governor(char* governor) {
    if (strncmp(governor, LISI_GOVERNOR, (strlen(LISI_GOVERNOR)+1)) == 0)
       return 1;
    return 0;
